@@ -1,11 +1,30 @@
 import React from 'react'
 
-function StatusDisplay() {
+function StatusDisplay({status}) {
+
+  const getColor = (status)=>{
+    let color = "bg-slate-700"
+    switch(status){
+      case "done":
+        color = "bg-greeb-200"
+        break
+      case "started":
+        color = "bg-yellow-200"
+        break;
+      case "not started":
+        color = "bg-red-200"
+        break;
+
+    }
+
+    return color
+  }
+
   return (
     <span 
-        className='inline-block rounded-full px-2 py-1 text-xs font-semibold text-gray-700 bg-green-200'
+        className={`inline-block rounded-full px-2 py-1 text-xs font-semibold text-gray-700 ${getColor(status)}`}
     >
-        done
+        {status}
     </span>
   )
 }
